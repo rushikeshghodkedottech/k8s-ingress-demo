@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: welcome-web-deployment
+  labels:
+    app: welcome-web
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: welcome-web
+  template:
+    metadata:
+      labels: 
+        app: welcome-web
+    spec:
+      containers:
+        - name: welcome-web
+          image: rushikeshghodkedottech/welcome-web
+          ports: 
+          - containerPort: 80

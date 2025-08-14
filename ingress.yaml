@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  # Add annotations if needed for your ingress controller
+  annotations:
+    # For nginx ingress controller (if using)
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # For other ingress controllers, add appropriate annotations
+
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: welcome-web-service
+                port:
+                  number: 80
+          
+          - pathType: Prefix
+            path: /nginx
+            backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 80
+
+          - pathType: Prefix
+            path: /web
+            backend:
+              service:
+                name: hello-web-service
+                port:
+                  number: 80
