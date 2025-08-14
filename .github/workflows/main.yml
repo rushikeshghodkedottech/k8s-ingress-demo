@@ -76,7 +76,7 @@ jobs:
 
   deploy-to-local:
     needs: build-and-test
-    runs-on: self-hosted  # This will run on your local machine
+    runs-on: self-hosted  
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
